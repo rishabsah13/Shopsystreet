@@ -4,25 +4,22 @@ const sequelize = require('./config/database');
 const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const paymentRoutes = require('./routes/payments');
-const cors = require("cors")
+const cors = require('cors');
 const app = express();
 const port = 3000;
 
-app.use(cors(
-  {
-    origin:["*"],
-    methods:["POST","GET","PATCH","DELETE","PUT"],
-    credentials:true
-  }
-))
-app.options("",cors(
-  {
-    origin:["*"],
-    methods:["POST","GET","PATCH","DELETE","PUT"],
-    credentials:true
-  }
-)
-            
+app.use(cors({
+  origin: ["*"],
+  methods: ["POST", "GET", "PATCH", "DELETE", "PUT"],
+  credentials: true
+}));
+
+app.options("*", cors({
+  origin: ["*"],
+  methods: ["POST", "GET", "PATCH", "DELETE", "PUT"],
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 
 sequelize.authenticate()
@@ -32,9 +29,11 @@ sequelize.authenticate()
 sequelize.sync()
   .then(() => console.log('Database synchronized...'))
   .catch(err => console.log('Error: ' + err));
+
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+  res.send('Hello World!');
+});
+
 app.get('/api/updates', (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
