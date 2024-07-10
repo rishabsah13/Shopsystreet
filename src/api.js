@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api'
+  baseURL: 'https://shopsystreet-3.vercel.app/'
 });
 
 export const getProducts = () => api.get('/products');
