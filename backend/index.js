@@ -32,7 +32,9 @@ sequelize.authenticate()
 sequelize.sync()
   .then(() => console.log('Database synchronized...'))
   .catch(err => console.log('Error: ' + err));
-
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 app.get('/api/updates', (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
