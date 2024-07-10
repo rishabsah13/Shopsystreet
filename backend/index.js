@@ -10,11 +10,19 @@ const port = 3000;
 
 app.use(cors(
   {
-    origin:["https://shopsystreet-fe.vercel.app/"],
-    methods:["POST","GET"],
+    origin:["*"],
+    methods:["POST","GET","PATCH","DELETE","PUT"],
     credentials:true
   }
 ))
+app.options("",cors(
+  {
+    origin:["*"],
+    methods:["POST","GET","PATCH","DELETE","PUT"],
+    credentials:true
+  }
+)
+            
 app.use(bodyParser.json());
 
 sequelize.authenticate()
