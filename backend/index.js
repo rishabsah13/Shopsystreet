@@ -10,17 +10,18 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT||3000;
 
+
 app.use(cors({
-  origin: ["https://shopsystreet-fe.vercel.app/"],
+  origin: ['https://shopsystreet-fe.vercel.app/', 'http://localhost:3000'],
   methods: ["POST", "GET", "PATCH", "DELETE", "PUT"],
   credentials: true
 }));
 
-app.options("*", cors({
-  origin: ["https://shopsystreet-fe.vercel.app/"],
-  methods: ["POST", "GET", "PATCH", "DELETE", "PUT"],
-  credentials: true
-}));
+// app.options("*", cors({
+//   origin: ["https://shopsystreet-fe.vercel.app/"],
+//   methods: ["POST", "GET", "PATCH", "DELETE", "PUT"],
+//   credentials: true
+// }));
 
 app.use(bodyParser.json());
 
