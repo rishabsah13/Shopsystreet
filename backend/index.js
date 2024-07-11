@@ -4,9 +4,11 @@ const sequelize = require('./config/database');
 const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const paymentRoutes = require('./routes/payments');
+require('dotenv').config()
+
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = process.env.PORT||3000;
 
 app.use(cors({
   origin: ["*"],
