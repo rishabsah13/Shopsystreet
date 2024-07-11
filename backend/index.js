@@ -11,13 +11,13 @@ const app = express();
 const port = process.env.PORT||3000;
 
 app.use(cors({
-  origin: ["*"],
+  origin: ["https://shopsystreet-fe.vercel.app/"],
   methods: ["POST", "GET", "PATCH", "DELETE", "PUT"],
   credentials: true
 }));
 
 app.options("*", cors({
-  origin: ["*"],
+  origin: ["https://shopsystreet-fe.vercel.app/"],
   methods: ["POST", "GET", "PATCH", "DELETE", "PUT"],
   credentials: true
 }));
