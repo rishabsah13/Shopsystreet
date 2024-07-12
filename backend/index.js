@@ -37,21 +37,21 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.get('/api/updates', (req, res) => {
-  res.setHeader('Content-Type', 'text/event-stream');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
+// app.get('/api/updates', (req, res) => {
+//   res.setHeader('Content-Type', 'text/event-stream');
+//   res.setHeader('Cache-Control', 'no-cache');
+//   res.setHeader('Connection', 'keep-alive');
 
-  const sendUpdate = () => {
-    res.write(`data: ${JSON.stringify({ message: 'Product updated' })}\n\n`);
-  };
+//   const sendUpdate = () => {
+//     res.write(`data: ${JSON.stringify({ message: 'Product updated' })}\n\n`);
+//   };
 
-  const interval = setInterval(sendUpdate, 10000);
+//   const interval = setInterval(sendUpdate, 10000);
 
-  req.on('close', () => {
-    clearInterval(interval);
-  });
-});
+//   req.on('close', () => {
+//     clearInterval(interval);
+//   });
+// });
 
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
