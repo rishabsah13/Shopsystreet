@@ -12,9 +12,9 @@ const port = process.env.PORT||3000;
 
 
 app.use(cors({
-  origin: ['*', 'http://localhost:3000'],
-  methods: ["POST", "GET", "PATCH", "DELETE", "PUT"],
-  credentials: true
+  origin: ['https://shopsystreet-fe.vercel.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  credentials: true,
 }));
 
 // app.options("*", cors({
